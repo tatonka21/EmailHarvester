@@ -20,11 +20,10 @@
     
     For more see the file 'LICENSE' for copying permission.
 """
-
-import requests
 import time
 import sys
 from termcolor import colored
+from security import safe_requests
 
 config = None
 app_emailharvester = None
@@ -57,9 +56,9 @@ class AskSearch(object):
             headers = {'User-Agent': self.userAgent}
             if(self.proxy):
                 proxies = {self.proxy.scheme: "http://" + self.proxy.netloc}
-                r=requests.get(urly, headers=headers, proxies=proxies)
+                r=safe_requests.get(urly, headers=headers, proxies=proxies)
             else:
-                r=requests.get(urly, headers=headers)
+                r=safe_requests.get(urly, headers=headers)
                 
         except Exception as e:
             print(e)
