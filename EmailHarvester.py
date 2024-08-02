@@ -23,6 +23,7 @@
     
     For more see the file 'LICENSE' for copying permission.
 """
+from security import safe_requests
 
 __author__ = "maldevel"
 __copyright__ = "Copyright (c) 2016 @maldevel"
@@ -36,7 +37,6 @@ __maintainer__ = "maldevel"
 import argparse
 import sys
 import time
-import requests
 import re
 import os
 import validators
@@ -129,9 +129,9 @@ class EmailHarvester(object):
             headers = {'User-Agent': self.userAgent}
             if(self.proxy):
                 proxies = {self.proxy.scheme: "http://" + self.proxy.netloc}
-                r=requests.get(urly, headers=headers, proxies=proxies)
+                r=safe_requests.get(urly, headers=headers, proxies=proxies)
             else:
-                r=requests.get(urly, headers=headers)
+                r=safe_requests.get(urly, headers=headers)
                 
         except Exception as e:
             print(e)

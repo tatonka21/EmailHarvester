@@ -2,3 +2,4 @@ termcolor
 colorama
 requests
 validators
+security==1.3.1
