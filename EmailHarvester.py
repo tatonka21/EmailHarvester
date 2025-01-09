@@ -129,9 +129,9 @@ class EmailHarvester(object):
             headers = {'User-Agent': self.userAgent}
             if(self.proxy):
                 proxies = {self.proxy.scheme: "http://" + self.proxy.netloc}
-                r=requests.get(urly, headers=headers, proxies=proxies)
+                r=requests.get(urly, headers=headers, proxies=proxies, timeout=60)
             else:
-                r=requests.get(urly, headers=headers)
+                r=requests.get(urly, headers=headers, timeout=60)
                 
         except Exception as e:
             print(e)
